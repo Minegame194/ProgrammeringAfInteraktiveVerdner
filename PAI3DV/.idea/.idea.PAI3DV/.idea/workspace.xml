@@ -6,14 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="9842607e-3b14-4a41-8582-499e7ab29697" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PAI3DV/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PAI3DV/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Materials/gradient_color_palate.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Materials/gradient_color_palate.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Prefabs/models/rock_4.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Prefabs/models/rock_4.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Terrain/layers/Ground_Dirt_Rocks_Layer.terrainlayer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Terrain/layers/Ground_Dirt_Rocks_Layer.terrainlayer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Models/cliff_4.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Models/cliff_4.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Models/mountain_1.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Models/mountain_1.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Models/mountain_2.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Models/mountain_2.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DeepSpaceSkyboxPack/GalaxyFire/Material/GalaxyFireMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepSpaceSkyboxPack/GalaxyFire/Material/GalaxyFireMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/New Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/New Material.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/New Terrain 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/New Terrain 1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NewShade.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NewShade.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tiny Teacup Studio/3D Military Airport Environment Pack/Materials/Default.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tiny Teacup Studio/3D Military Airport Environment Pack/Materials/Default.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tiny Teacup Studio/3D Military Airport Environment Pack/Materials/Light.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tiny Teacup Studio/3D Military Airport Environment Pack/Materials/Light.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +96,7 @@
       <workItem from="1758389942100" duration="4000" />
       <workItem from="1758389965997" duration="2000" />
       <workItem from="1758638926767" duration="2000" />
-      <workItem from="1758642683786" duration="1343000" />
+      <workItem from="1758642683786" duration="4229000" />
     </task>
     <servers />
   </component>

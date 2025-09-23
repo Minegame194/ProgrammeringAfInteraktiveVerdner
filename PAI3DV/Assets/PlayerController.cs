@@ -24,6 +24,9 @@ public class PlayerMovement : MonoBehaviour
     
     bool isGrounded;
     bool isMoving;
+
+    public ParticleSystem[] dustParticles;
+    public TrailRenderer[] wheelTrails;
     
     private Vector3 lastPosition = new Vector3(0f, 0f, 0f);
     // Start is called before the first frame update
@@ -40,6 +43,18 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         
+        for (int i = 0; i < dustParticles.Length; i++)
+        {
+            if(!dustParticles[i].isPlaying && isGrounded) dustParticles[i].Play();
+            else if (dustParticles[i].isPlaying && !isGrounded) dustParticles[i].Stop();
+        }
+        
+        for (int i = 0; i < wheelTrails.Length; i++)
+        {
+            if(!wheelTrails[i].emitting && isGrounded) wheelTrails[i].emitting = true;
+            else if (wheelTrails[i].emitting && !isGrounded) wheelTrails[i].emitting = false;
+        }
+            
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
@@ -55,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
 
             
 
-            transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+            transform.localRotation = Quaternion.Euler(0, yRotation, 0f);
 
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
