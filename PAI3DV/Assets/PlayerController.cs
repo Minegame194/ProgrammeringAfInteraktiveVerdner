@@ -40,54 +40,57 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Move();
-        
-        for (int i = 0; i < dustParticles.Length; i++)
+        DrivingEffects();
+        GroundedCheck();
+        ApplyGravity();
+        MovingCheck();
+
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            if(!dustParticles[i].isPlaying && isGrounded) dustParticles[i].Play();
-            else if (dustParticles[i].isPlaying && !isGrounded) dustParticles[i].Stop();
+            Jump();
         }
-        
-        for (int i = 0; i < wheelTrails.Length; i++)
-        {
-            if(!wheelTrails[i].emitting && isGrounded) wheelTrails[i].emitting = true;
-            else if (wheelTrails[i].emitting && !isGrounded) wheelTrails[i].emitting = false;
-        }
-
-            isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-            if (isGrounded && velocity.y < 0)
-            {
-                velocity.y = -2f;
-            }
-
-        
-
-            if (Input.GetButtonDown("Jump") && isGrounded)
-            {
-                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            }
-
-            //Falling down
-            velocity.y += gravity * Time.deltaTime;
-
-            controller.Move(velocity * Time.deltaTime);
-
-            if (lastPosition != gameObject.transform.position && isGrounded)
-            {
-                isMoving = true;
-            }
-            else
-            {
-                isMoving = false;
-            }
-
-            lastPosition = gameObject.transform.position;
-        
         
     }
 
+    private void MovingCheck()
+    {
+        if (lastPosition != gameObject.transform.position && isGrounded)
+        {
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+        }
 
-    void Move()
+        lastPosition = gameObject.transform.position;
+    }
+    private void ApplyGravity()
+    {
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
+        
+        //Falling down
+        velocity.y += gravity * Time.deltaTime;
+
+        controller.Move(velocity * Time.deltaTime);
+        
+    }
+
+    private void GroundedCheck()
+    {
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+    }
+    
+    private void Jump()
+    {
+        velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+    }
+
+
+    private void Move()
     {
         float x = Input.GetAxisRaw("Horizontal");
         float z = Input.GetAxis("Vertical");
@@ -95,13 +98,13 @@ public class PlayerMovement : MonoBehaviour
         Vector3 direction = transform.forward;
 
         float turnSpeed = Mathf.Lerp(1f, 0.5f, Time.deltaTime * velocity.magnitude * 10f);
-        Debug.Log(velocity.magnitude);
+        
             
         if (x != 0)
         {
             if (z < 0)
             {
-                direction = Vector3.Lerp(direction, transform.right * x * -1, Time.deltaTime * turnSpeed);
+                direction = Vector3.Lerp(direction, transform.right * -x, Time.deltaTime * turnSpeed);
             }
             else
             {
@@ -124,6 +127,23 @@ public class PlayerMovement : MonoBehaviour
             transform.localRotation = Quaternion.LookRotation(move);
         }
         
+        
+    }
+
+    private void DrivingEffects()
+    {
+        
+        foreach (var dustParticle in dustParticles)
+        {
+            if(!dustParticle.isPlaying && isGrounded) dustParticle.Play();
+            else if (dustParticle.isPlaying && !isGrounded) dustParticle.Stop();
+        }
+
+        foreach (var wheelTrail in wheelTrails)
+        {
+            if(!wheelTrail.emitting && isGrounded) wheelTrail.emitting = true;
+            else if (wheelTrail.emitting && !isGrounded) wheelTrail.emitting = false;
+        }
         
     }
 }
