@@ -7,9 +7,6 @@ public class PlayerMovement : MonoBehaviour
 {
     private CharacterController controller;
     
-    public float mouseSensitivity = 100f;
-    float xRotation = 0f;
-    float yRotation = 0f;
 
     public float speed = 5f;
     public float gravity = -9.81f * 2;
@@ -42,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Move();
         
         for (int i = 0; i < dustParticles.Length; i++)
         {
@@ -54,23 +52,6 @@ public class PlayerMovement : MonoBehaviour
             if(!wheelTrails[i].emitting && isGrounded) wheelTrails[i].emitting = true;
             else if (wheelTrails[i].emitting && !isGrounded) wheelTrails[i].emitting = false;
         }
-            
-            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-
-            if (isActive)
-            {
-                xRotation -= mouseY;
-                yRotation += mouseX;
-            }
-
-            
-
-            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-
-            
-
-            transform.localRotation = Quaternion.Euler(0, yRotation, 0f);
 
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -79,20 +60,7 @@ public class PlayerMovement : MonoBehaviour
                 velocity.y = -2f;
             }
 
-            float x = Input.GetAxis("Horizontal");
-            float z = Input.GetAxis("Vertical");
-
-            Vector3 move = transform.right * x + transform.forward * z;
-
-            float upSpeed = speed * Time.deltaTime;
-            
-            
-            
-            
-            if (isActive)
-            {
-               controller.Move(move * upSpeed);
-            }
+        
 
             if (Input.GetButtonDown("Jump") && isGrounded)
             {
@@ -104,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
             controller.Move(velocity * Time.deltaTime);
 
-            if (lastPosition != gameObject.transform.position && isGrounded == true)
+            if (lastPosition != gameObject.transform.position && isGrounded)
             {
                 isMoving = true;
             }
@@ -114,6 +82,47 @@ public class PlayerMovement : MonoBehaviour
             }
 
             lastPosition = gameObject.transform.position;
+        
+        
+    }
+
+
+    void Move()
+    {
+        float x = Input.GetAxisRaw("Horizontal");
+        float z = Input.GetAxis("Vertical");
+
+        Vector3 direction = transform.forward;
+
+        float turnSpeed = Mathf.Lerp(1f, 0.5f, Time.deltaTime * velocity.magnitude * 10f);
+        Debug.Log(velocity.magnitude);
+            
+        if (x != 0)
+        {
+            if (z < 0)
+            {
+                direction = Vector3.Lerp(direction, transform.right * x * -1, Time.deltaTime * turnSpeed);
+            }
+            else
+            {
+                direction = Vector3.Lerp(direction, transform.right * x, Time.deltaTime * turnSpeed);
+            }
+            
+        }
+        
+        Vector3 move = direction * z;
+
+        float upSpeed = speed * Time.deltaTime;
+
+        controller.Move(move * upSpeed);
+        if (z < 0)
+        {
+            transform.localRotation = Quaternion.LookRotation(-move);
+        }
+        else if(z > 0)
+        {
+            transform.localRotation = Quaternion.LookRotation(move);
+        }
         
         
     }

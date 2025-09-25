@@ -6,15 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="9842607e-3b14-4a41-8582-499e7ab29697" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PAI3DV/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PAI3DV/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Models/cliff_4.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Models/cliff_4.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Models/mountain_1.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Models/mountain_1.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Models/mountain_2.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Models/mountain_2.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepSpaceSkyboxPack/GalaxyFire/Material/GalaxyFireMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepSpaceSkyboxPack/GalaxyFire/Material/GalaxyFireMaterial.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/New Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/New Material.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/New Terrain 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/New Terrain 1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/NewShade.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NewShade.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Settings/UniversalRP-HighQuality.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Settings/UniversalRP-HighQuality.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Settings/UniversalRP-LowQuality.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Settings/UniversalRP-LowQuality.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Settings/UniversalRP-MediumQuality.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BOKI/LowPolyNature/Settings/UniversalRP-MediumQuality.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/InputSystem_Actions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputSystem_Actions.inputactions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/PC_RPAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/PC_RPAsset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,18 +35,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.45f1\Editor\Unity.exe" />
@@ -97,6 +97,9 @@
       <workItem from="1758389965997" duration="2000" />
       <workItem from="1758638926767" duration="2000" />
       <workItem from="1758642683786" duration="4229000" />
+      <workItem from="1758789870036" duration="7436000" />
+      <workItem from="1758804345611" duration="5000" />
+      <workItem from="1758804402458" duration="2101000" />
     </task>
     <servers />
   </component>
