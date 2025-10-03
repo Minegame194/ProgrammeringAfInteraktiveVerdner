@@ -1,108 +1,74 @@
 using System;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class GateOpeningScript : MonoBehaviour
 {
     public GameObject GateLeft;
     public GameObject GateRight;
-    public float openRange = 0;
 
-    public float openSpeed = 0.1f;
+    public float openRange = 90f;  
+    public float openSpeed = 1f;    
 
-    private Vector3 GateLeftOriginRot;
-    private Vector3 GateRightOriginRot;
-    private Vector3 GateLeftOpenPos;
-    private Vector3 GateRightOpenPos;
+    private Quaternion leftClosedRot;
+    private Quaternion rightClosedRot;
+    private Quaternion leftOpenRot;
+    private Quaternion rightOpenRot;
 
-    private float gateFloat = 0f;
+    private float leftT = 0f;
+    private float rightT = 0f;
 
-    public float OpenOffset = 5f;
-
-    
-   private enum GateState
-    {
-        Open, Closed, Opening, Closing
-    }
+    private enum GateState { Open, Closed, Opening, Closing }
+    [SerializeField] private GateState state = GateState.Closed;
 
     private void Start()
     {
-        GateLeftOriginRot = GateLeft.GetComponent<Transform>().eulerAngles;
-        GateRightOriginRot = GateRight.GetComponent<Transform>().eulerAngles;
+        leftClosedRot = GateLeft.transform.rotation;
+        rightClosedRot = GateRight.transform.rotation;
         
-        GateRightOpenPos = GateRightOriginRot + new Vector3(0f, -openRange, 0f);
-        GateLeftOpenPos = GateLeftOriginRot + new Vector3(0f, openRange, 0f);
+        leftOpenRot = leftClosedRot * Quaternion.Euler(0f, openRange, 0f);
+        rightOpenRot = rightClosedRot * Quaternion.Euler(0f, -openRange, 0f);
     }
 
-    [SerializeField] private GateState state = GateState.Closed;
-    [SerializeField] private GateState gateRightstate = GateState.Closed;
-    [SerializeField] private GateState gateLeftstate = GateState.Closed;
-    
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            if (gateRightstate == GateState.Open && gateLeftstate == GateState.Open)
-            {
-                state = GateState.Closing;
-                gateLeftstate = GateState.Closing;
-                gateRightstate = GateState.Closing;
-            }
-            else if (gateRightstate == GateState.Closed && gateLeftstate == GateState.Closed)
-            {
-                state = GateState.Opening;
-                gateLeftstate = GateState.Opening;
-                gateRightstate = GateState.Opening;
-            }
+            if (state == GateState.Closed) state = GateState.Opening;
+            else if (state == GateState.Open) state = GateState.Closing;
         }
 
-        if (state == GateState.Closing || state == GateState.Opening)
-        {
-            gateRightstate = MoveGate(GateRight, gateRightstate, GateRightOriginRot, GateRightOpenPos);
-            gateLeftstate = MoveGate(GateLeft, gateLeftstate, GateLeftOriginRot, GateLeftOpenPos);
-            
-            if(gateLeftstate == GateState.Open && gateRightstate == GateState.Open) state = GateState.Open;
-            if(gateLeftstate == GateState.Closed && gateRightstate == GateState.Closed) state = GateState.Closed;
-
-        }
-        
-    }
-
-    bool gateCheck(Vector3 currentPosition, Vector3 desiredPosition)
-    {
-        return currentPosition.magnitude >= desiredPosition.magnitude - OpenOffset && currentPosition.magnitude <= desiredPosition.magnitude + OpenOffset;
-    }
-    
-
-    GateState MoveGate(GameObject gate, GateState gateState, Vector3 closedPosition, Vector3 openPosition)
-    {
-        switch (gateState)
+        switch (state)
         {
             case GateState.Opening:
-                
-                
-                gate.transform.eulerAngles = math.lerp(closedPosition, openPosition, gateFloat);
-                gateFloat += openSpeed * Time.deltaTime;
-                
-                
-                //float rotation = Mathf.Lerp(closedPosition.y, openPosition.y, Time.deltaTime);
-                
-                //gate.transform.eulerAngles = new Vector3(0f, gate.transform.eulerAngles.y + rotation, 0f);
-                Debug.Log("lerp: " + openSpeed * Time.deltaTime);
-                if(gateCheck(gate.transform.eulerAngles, openPosition )) gateState = GateState.Open;
+                leftT += openSpeed * Time.deltaTime;
+                rightT += openSpeed * Time.deltaTime;
+
+                GateLeft.transform.rotation = Quaternion.Lerp(leftClosedRot, leftOpenRot, leftT);
+                GateRight.transform.rotation = Quaternion.Lerp(rightClosedRot, rightOpenRot, rightT);
+
+                if (Quaternion.Angle(GateLeft.transform.rotation, leftOpenRot) < 0.5f &&
+                    Quaternion.Angle(GateRight.transform.rotation, rightOpenRot) < 0.5f)
+                {
+                    state = GateState.Open;
+                }
                 break;
-                
+
             case GateState.Closing:
-                gate.transform.eulerAngles = math.lerp(openPosition, closedPosition, openSpeed * Time.deltaTime);
-                if(gateCheck(gate.transform.eulerAngles, closedPosition)) gateState = GateState.Closed;
+                leftT -= openSpeed * Time.deltaTime;
+                rightT -= openSpeed * Time.deltaTime;
+
+                GateLeft.transform.rotation = Quaternion.Lerp(leftClosedRot, leftOpenRot, leftT);
+                GateRight.transform.rotation = Quaternion.Lerp(rightClosedRot, rightOpenRot, rightT);
+
+                if (Quaternion.Angle(GateLeft.transform.rotation, leftClosedRot) < 0.5f &&
+                    Quaternion.Angle(GateRight.transform.rotation, rightClosedRot) < 0.5f)
+                {
+                    state = GateState.Closed;
+                }
                 break;
         }
         
-        return gateState;
-        
-        
-        
-        
+        leftT = Mathf.Clamp01(leftT);
+        rightT = Mathf.Clamp01(rightT);
     }
 }
